@@ -1,0 +1,26 @@
+﻿{
+    "configurationInfos":{
+        "processQueueName":"Acme1Data",
+        "processQueueFolder":"Shared",
+        "maxRetryNumberInitApplications":3,
+        "maxRetryNumberProcess":2,
+        "maxConsecutiveApplicationExceptions":3,
+        "useStorageBucketFiles":false,
+        "localBucketDir":"",
+        "exScreenshotsFolderPath":"",
+        "businessProcessName":"",
+		"AcmeUrl":"https://acme-test.uipath.com/",
+        "assets":{
+            "Acme1Data":{
+                "name":"Acme1Data",
+                "orchestratorFolder":"Shared"
+            }
+        },
+        "credentials":{
+            "AcmeCredential":{
+                "name":"Acme1Credentials",
+                "orchestratorFolder":"Shared"
+            }
+        }
+    }
+}
