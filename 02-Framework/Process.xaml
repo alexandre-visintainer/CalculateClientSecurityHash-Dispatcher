@@ -126,6 +126,7 @@
       <Variable x:TypeArguments="x:String" Name="ClientName" />
       <Variable x:TypeArguments="x:String" Name="ClientCountry" />
       <Variable x:TypeArguments="scg:Dictionary(x:String, x:Object)" Name="queueItemTeste" />
+      <Variable x:TypeArguments="x:String" Name="AcmeClientUrl" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -138,6 +139,7 @@
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="x:String" x:Key="in_WIID">[in_TransactionItem.Item("WIID").ToString]</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_AcmeUrl">[in_Config("AcmeUrl").ToString]</InArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_ClientUrl">[AcmeClientUrl]</OutArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="ExtractClientInformation - Invoke Workflow File (05-Workflows\Edge\ExtractClientInformation.xaml)" sap:VirtualizedContainerService.HintSize="433.6,176" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="05-Workflows\Edge\ExtractClientInformation.xaml">
@@ -152,7 +154,7 @@
         <OutArgument x:TypeArguments="x:String">[queueItemReference]</OutArgument>
       </Assign.To>
       <Assign.Value>
-        <InArgument x:TypeArguments="x:String">AcmeTest</InArgument>
+        <InArgument x:TypeArguments="x:String">AcmeHashGenerator</InArgument>
       </Assign.Value>
     </Assign>
     <TryCatch DisplayName="T/C - Add Queue Item" sap:VirtualizedContainerService.HintSize="433.6,1034.4" sap2010:WorkflowViewState.IdRef="TryCatch_1">
@@ -166,7 +168,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <TryCatch.Try>
-        <ui:AddQueueItem ServiceBaseAddress="{x:Null}" DisplayName="Add Transaction Queue Item" FolderPath="[in_config(&quot;processQueueFolder&quot;).ToString]" sap:VirtualizedContainerService.HintSize="417.6,194.4" sap2010:WorkflowViewState.IdRef="AddQueueItem_1" ItemInformationCollection="[new System.Collections.Generic.Dictionary(Of System.String, System.Object) From { { &quot;ClientId&quot;, ClientID },{ &quot;ClientName&quot;, ClientName },{ &quot;ClientCountry&quot;, ClientCountry } }]" Priority="Normal" QueueType="[in_config(&quot;processQueueName&quot;).ToString]" Reference="[queueItemReference]" TimeoutMS="[Cint(in_config(&quot;timeoutOrchestratorInteractions&quot;))]">
+        <ui:AddQueueItem ServiceBaseAddress="{x:Null}" DisplayName="Add Transaction Queue Item" FolderPath="[in_config(&quot;processQueueFolder&quot;).ToString]" sap:VirtualizedContainerService.HintSize="417.6,194.4" sap2010:WorkflowViewState.IdRef="AddQueueItem_1" ItemInformationCollection="[new System.Collections.Generic.Dictionary(Of System.String, System.Object) From { { &quot;ClientId&quot;, ClientID },{ &quot;ClientName&quot;, ClientName },{ &quot;ClientCountry&quot;, ClientCountry },{ &quot;AcmeClientUrl&quot;, AcmeClientUrl } }]" Priority="Normal" QueueType="[in_config(&quot;processQueueName&quot;).ToString]" Reference="[queueItemReference]" TimeoutMS="[Cint(in_config(&quot;timeoutOrchestratorInteractions&quot;))]">
           <ui:AddQueueItem.ItemInformation>
             <InArgument x:TypeArguments="x:String" x:Key="MachineName">[Environment.MachineName]</InArgument>
             <InArgument x:TypeArguments="x:String" x:Key="UserDomainName">[Environment.UserDomainName]</InArgument>

@@ -2,6 +2,7 @@
   <x:Members>
     <x:Property Name="in_WIID" Type="InArgument(x:String)" />
     <x:Property Name="in_AcmeUrl" Type="InArgument(x:String)" />
+    <x:Property Name="out_ClientUrl" Type="OutArgument(x:String)" />
   </x:Members>
   <VisualBasic.Settings>
     <x:Null />
@@ -105,7 +106,7 @@
       <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="NavigateToDetails" sap:VirtualizedContainerService.HintSize="1122.4,1025.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="NavigateToDetails" sap:VirtualizedContainerService.HintSize="1119.2,1181.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="AcmeUrl" />
     </Sequence.Variables>
@@ -114,13 +115,13 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Browser Edge: ACME System 1 - Work Items" sap:VirtualizedContainerService.HintSize="1019.2,1002.4" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" ScopeGuid="69572566-af15-4dc8-86de-3df85b9b4f10" Version="V2">
+    <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Browser Edge: ACME System 1 - Work Items" sap:VirtualizedContainerService.HintSize="1019.2,1158.4" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" ScopeGuid="69572566-af15-4dc8-86de-3df85b9b4f10" Version="V2">
       <uix:NApplicationCard.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="985.6,762.4" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="985.6,918.4" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -135,7 +136,7 @@
               </Assign.Value>
             </Assign>
             <uix:NGoToUrl DisplayName="Go To URL" sap:VirtualizedContainerService.HintSize="952,114.4" sap2010:WorkflowViewState.IdRef="NGoToUrl_1" Url="[AcmeUrl]" Version="V4" />
-            <uix:NCheckState DisplayName="Check App State 'Work Items - Work Item …'" sap:VirtualizedContainerService.HintSize="952,473.6" sap2010:WorkflowViewState.IdRef="NCheckState_1" ScopeIdentifier="69572566-af15-4dc8-86de-3df85b9b4f10" Version="V4">
+            <uix:NCheckState DisplayName="Check App State 'Work Items - Work Item …'" sap:VirtualizedContainerService.HintSize="952,520.8" sap2010:WorkflowViewState.IdRef="NCheckState_1" ScopeIdentifier="69572566-af15-4dc8-86de-3df85b9b4f10" Version="V4">
               <uix:NCheckState.IfExists>
                 <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="449.6,230.4" sap2010:WorkflowViewState.IdRef="Sequence_3">
                   <sap:WorkflowViewStateService.ViewState>
@@ -160,6 +161,14 @@
                 <uix:TargetAnchorable BrowserURL="acme-test.uipath.com/work-items/104491061" CVScreenId="041f0296-c481-481b-b33a-5a6b67dc8d50" CvTextArea="254, 219, 623, 37" CvTextArgument="Work Items - Work Item Details" CvType="Text" DesignTimeRectangle="257, 214, 1425, 61" DesignTimeScaleFactor="1.25" ElementType="Text" FuzzySelectorArgument="&lt;webctrl tag='H1' type='' class='page-header' aaname='                                                                                                                                                                                     Work Items                                                                                                                                         -                                                 Work Item Details                                                         ' check:innerText='Work Items - Work Item Details' /&gt;" Guid="2faaa082-079a-4e5b-90c2-c510cd7c1345" InformativeScreenshot="84867163ea267d051faff7ae0f6ad297.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='ACME System 1 - Work Items' /&gt;" SearchSteps="FuzzySelector, CV" Version="V4" Visibility="Interactive" />
               </uix:NCheckState.Target>
             </uix:NCheckState>
+            <Assign sap:VirtualizedContainerService.HintSize="952,107.2" sap2010:WorkflowViewState.IdRef="Assign_3">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[out_ClientUrl]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">[AcmeUrl]</InArgument>
+              </Assign.Value>
+            </Assign>
           </Sequence>
         </ActivityAction>
       </uix:NApplicationCard.Body>
